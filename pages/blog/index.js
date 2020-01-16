@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import Layout from '../../src/components/Layout';
 import Link from 'next/link';
 
 const importBlogPosts = async () => {
+  // https://webpack.js.org/guides/dependency-management/#requirecontext
   const mdFiles = require
     .context('../../content/blogPosts', false, /\.md$/)
     .keys()
@@ -16,16 +18,39 @@ const importBlogPosts = async () => {
 };
 
 const Blog = ({ postsList }) => {
+  const [filter, setFilter] = useState('all');
+  const categories = postsList.map((item) => item.attributes.category);
+
+  const renderButtons = () => categories.map((item) => (
+    <button key={item} data-filter={item} onClick={handleButtonClick}>
+      {`Category: ${item}`}
+    </button>
+  ));
+
+  const handleButtonClick = (ev) => {
+    setFilter(ev.target.dataset.filter);
+  };
+
+  const renderPostList = () => postsList
+    .filter((item) => filter === 'all' || item.attributes.category === filter)
+    .map((post) => (
+    <div key={post.slug}>
+      <Link href="/blog/post/[slug]" as={`/blog/post/${post.slug}`}>
+        <a>{post.attributes.title}</a>
+      </Link>
+    </div>
+  ));
+
   return (
     <Layout>
       <div>
-        {postsList.map((post) => (
-          <div key={post.slug}>
-            <Link href="/blog/post/[slug]" as={`/blog/post/${post.slug}`}>
-              <a>{post.attributes.title}</a>
-            </Link>
-          </div>
-        ))}
+        <button data-filter="all" onClick={handleButtonClick}>
+          All
+        </button>
+        {renderButtons()}
+      </div>
+      <div>
+        {renderPostList()}
       </div>
     </Layout>
   );
