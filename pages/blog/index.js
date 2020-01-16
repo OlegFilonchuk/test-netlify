@@ -19,13 +19,16 @@ const importBlogPosts = async () => {
 
 const Blog = ({ postsList }) => {
   const [filter, setFilter] = useState('all');
-  const categories = postsList.map((item) => item.attributes.category);
 
-  const renderButtons = () => categories.map((item) => (
-    <button key={item} data-filter={item} onClick={handleButtonClick}>
-      {`Category: ${item}`}
-    </button>
-  ));
+  const renderButtons = () => {
+    const categories = postsList.map((item) => item.attributes.category);
+    const uniqueCategories = [...new Set(categories)];
+    return uniqueCategories.map((item) => (
+      <button key={item} data-filter={item} onClick={handleButtonClick}>
+        {`Category: ${item}`}
+      </button>
+    ));
+  };
 
   const handleButtonClick = (ev) => {
     setFilter(ev.target.dataset.filter);
