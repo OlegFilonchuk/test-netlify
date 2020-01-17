@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "start": "node server/app.js",
+    "export": "next export",
     "now": "now && now alias"
   },
   "dependencies": {
