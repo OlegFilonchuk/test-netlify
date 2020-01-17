@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "dev": "next dev",
     "build": "next build",
     "start": "node server/app.js",
     "export": "yarn build && next export",

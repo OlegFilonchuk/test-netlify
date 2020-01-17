@@ -8,14 +8,20 @@ const Home = () => {
   return (
     <Layout>
       <div>
-
-      <Link href="/blog">
-        <a>blog</a>
-      </Link>
+        <Link href="/blog">
+          <a>blog</a>
+        </Link>
       </div>
-      <Link href="/sitemap.xml">
-        <a>sitemap</a>
-      </Link>
+
+      <div>
+        <Link href="/sitemap.xml">
+          <a>sitemap</a>
+        </Link>
+      </div>
+
+      <div>
+        <Link href="/admin/index.html"><a>admin</a></Link>
+      </div>
 
 
       <article>
