@@ -7,7 +7,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
 const ROOT_URL = dev
   ? `http://localhost:${port}`
-  : 'https://admiring-raman-475f9a.netlify.com';
+  : 'https://affectionate-lumiere-df8946.netlify.com';
 
 const app = next({ dev });
 const handle = app.getRequestHandler();

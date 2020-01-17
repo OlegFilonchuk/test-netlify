@@ -2,7 +2,7 @@ const sm = require('sitemap');
 const posts = require('./posts');
 
 const sitemap = sm.createSitemap({
-  hostname: 'https://admiring-raman-475f9a.netlify.com',
+  hostname: 'https://affectionate-lumiere-df8946.netlify.com',
   cacheTime: 600000, // 600 sec - cache purge period
 });
 
