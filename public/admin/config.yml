@@ -42,25 +42,19 @@ collections:
           widget: 'string',
           required: false,
       }
-#      - {
-#        label: 'Category',
-#        name: 'category',
-#        widget: 'select',
-#        options: ['first', 'second', 'third', 'fourth'],
-#        required: true,
-#      }
+      - {
+        label: 'Category',
+        name: 'category',
+        widget: 'relation',
+        collection: 'categories',
+        searchFields: ['title'],
+        valueField: 'title',
+      }
       - { label: 'Body', name: 'body', widget: 'markdown', required: true }
   - label: 'Categories'
     name: 'categories'
-#    files:
-#      - label: 'Categories'
-#        name: 'categories'
-#        file: 'content/categories.md'
-#        fields:
-#          - { label: 'Title', name: 'categorynames', widget: 'list' }
     folder: 'content/categories'
     create: true
     slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
     fields:
-      - {Label: 'Category', name: 'category', widget: 'string', required: false}
-
+      - {Label: 'Title', name: 'title', widget: 'string', required: true}

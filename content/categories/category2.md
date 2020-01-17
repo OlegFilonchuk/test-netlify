@@ -1,5 +1,4 @@
 ---
-category: category2
+title: category2
 
 ---
-something
