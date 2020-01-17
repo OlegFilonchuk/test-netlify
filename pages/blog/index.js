@@ -15,18 +15,30 @@ const importBlogPosts = async () => {
       return { ...md, slug: path.substring(0, path.length - 3)}
     })
   )
-
 };
 
-const Blog = ({ postsList }) => {
+const importCategories = async () => {
+  const mdFiles = require
+    .context('../../content/categories', false, /\.md$/)
+    .keys()
+    .map((relativePath) => relativePath.substring(2))
+
+  return Promise.all(
+    mdFiles.map(async (path) => {
+      const md = await import(`../../content/categories/${path}`);
+      return { ...md, slug: path.substring(0, path.length -3)}
+    })
+  )
+};
+
+const Blog = ({ postsList, categoriesList }) => {
   const [filter, setFilter] = useState('all');
 
   const renderButtons = () => {
-    const categories = postsList.map((item) => item.attributes.category);
-    const uniqueCategories = [...new Set(categories)];
-    return uniqueCategories.map((item) => (
-      <button key={item} data-filter={item} onClick={handleButtonClick}>
-        {`Category: ${item}`}
+
+    return categoriesList.map(({ attributes: { title }}) => (
+      <button key={title} data-filter={title} onClick={handleButtonClick}>
+        {`Category: ${title}`}
       </button>
     ));
   };
@@ -62,7 +74,8 @@ const Blog = ({ postsList }) => {
 
 Blog.getInitialProps = async () => {
   const postsList = await importBlogPosts();
-  return { postsList }
+  const categoriesList = await importCategories();
+  return { postsList, categoriesList }
 };
 
 
