@@ -15,6 +15,7 @@ const importBlogPosts = async () => {
       return { ...md, slug: path.substring(0, path.length - 3)}
     })
   )
+
 };
 
 const Blog = ({ postsList }) => {

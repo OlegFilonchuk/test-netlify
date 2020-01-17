@@ -4,11 +4,19 @@ import Layout from '../src/components/Layout';
 
 const Home = () => {
   const { title, cats } = attributes;
+
   return (
     <Layout>
+      <div>
+
       <Link href="/blog">
         <a>blog</a>
       </Link>
+      </div>
+      <Link href="/sitemap.xml">
+        <a>sitemap</a>
+      </Link>
+
 
       <article>
         <h1>{title}</h1>

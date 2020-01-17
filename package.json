@@ -1,18 +1,18 @@
 {
-  "name": "test-netlify",
+  "name": "with-sitemap-and-robots-express-server",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
-  "dependencies": {
-    "next": "^9.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
   "scripts": {
-    "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "export": "npm run build && next export"
+    "start": "node server/app.js",
+    "now": "now && now alias"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "next": "latest",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "sitemap": "^1.13.0"
   },
   "devDependencies": {
     "frontmatter-markdown-loader": "^3.1.0"
