@@ -10,7 +10,7 @@
     "now": "now && now alias"
   },
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "front-matter-markdown": "^0.4.4",
     "next": "latest",
     "react": "^16.7.0",
